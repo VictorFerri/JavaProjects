@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class TesteUsaArray{
-    public static void main(String args[]){
+    public static void main(String[] args){
     Scanner teclado = new Scanner(System.in);
-    int a[] = new int[5];
-    int b[] = new int[5];
-    int c[] = new int[5];
+    int[] a = new int[5];
+    int[] b = new int[5];
+    int[] c = new int[5];
     int opcaoPessoa = 0;
     UsaArray usaArrays = new UsaArray();
 
