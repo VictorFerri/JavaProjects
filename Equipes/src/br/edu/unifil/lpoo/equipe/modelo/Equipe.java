@@ -41,8 +41,9 @@ public class Equipe {
 
     public void listarJogadores() {
         for (int i = 0; i < jogadores.size(); i++) {
-            System.out.println("|----------------------------");
-            System.out.printf("| Nome: %s", jogadores.get(i).getNome());
+            System.out.println("|---------------------------- \n");
+            System.out.printf("| Nome: %s \n", jogadores.get(i).getNome());
+            System.out.printf("| Posição: %s \n", jogadores.get(i).getPosicao());
         }
     }
 

@@ -15,14 +15,14 @@ public class Teste {
         int opcaoPessoa = 1;
         int aux;
 
-        String nomeDaEquipe;
-        String nomeDoJogador;
-        String posicaoDoJogador;
-        String novoNomeDoJogador;
-        Jogador jogadorAtual;
-
-
         while (opcaoPessoa == 1) {
+            String nomeDaEquipe;
+            String nomeDoJogador;
+            String posicaoDoJogador;
+            String novoNomeDoJogador;
+            Jogador jogadorAtual;
+            boolean sucesso = false;
+
             System.out.println("|--------------#Menu#--------------|");
             System.out.println("|1 - Criar Equipe:                 |");
             System.out.println("|2 - Mudar Nome da Equipe:         |");
@@ -38,118 +38,150 @@ public class Teste {
 
             switch (opcaoPessoa) {
                 case 1:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe?");
-                    nomeDaEquipe = teclado.next();
-                    for (aux = 0; aux < equipes.size(); aux++) {
-                        if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
-                            System.out.println("Nome já utilizado!");
-                        } else {
-                            equipes.add(new Equipe(nomeDaEquipe));
-                            System.out.printf("Equipe %s cadastrada com sucesso!", nomeDaEquipe);
-                        }
-                    }
-
+                    nomeDaEquipe = teclado.nextLine();
+                    equipes.add(new Equipe(nomeDaEquipe));
+                    System.out.printf("Equipe '%s' cadastrada com sucesso! \n", nomeDaEquipe);
                     break;
 
                 case 2:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe que deseja alterar?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             System.out.println("Para qual nome você deseja alterar?");
-                            nomeDaEquipe = teclado.next();
+                            nomeDaEquipe = teclado.nextLine();
                             equipes.get(aux).setNomeDaEquipe(nomeDaEquipe);
-                            System.out.printf("Nome alterado para %s com sucesso!", nomeDaEquipe);
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            System.out.printf("Nome alterado para '%s' com sucesso! \n", nomeDaEquipe);
+                            sucesso = true;
                         }
                     }
+
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
 
                 case 3:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             System.out.println("Qual o nome do Jogador?");
-                            nomeDoJogador = teclado.next();
+                            nomeDoJogador = teclado.nextLine();
                             System.out.println("Qual a posição do Jogador?");
-                            posicaoDoJogador = teclado.next();
+                            posicaoDoJogador = teclado.nextLine();
 
                             equipes.get(aux).addJogador(new Jogador(nomeDoJogador, posicaoDoJogador));
-                            System.out.printf("Jogador %s adicionado com sucesso!", nomeDoJogador);
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            System.out.printf("Jogador '%s' adicionado com sucesso! \n", nomeDoJogador);
+                            sucesso = true;
                         }
                     }
 
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
 
                 case 4:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
 
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             System.out.println("Qual o nome do Jogador?");
-                            nomeDoJogador = teclado.next();
+                            nomeDoJogador = teclado.nextLine();
 
                             equipes.get(aux).removeJogador(equipes.get(aux).getJogador(nomeDoJogador));
-                            System.out.printf("Jogador %s removido com sucesso!", nomeDoJogador);
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            System.out.printf("Jogador '%s' removido com sucesso! \n", nomeDoJogador);
+                            sucesso = true;
                         }
                     }
+
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
+
                 case 5:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
 
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             equipes.get(aux).listarJogadores();
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            sucesso = true;
                         }
                     }
+
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
 
                 case 6:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe do Jogador?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
 
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             System.out.println("Qual o nome do Jogador?");
-                            nomeDoJogador = teclado.next();
+                            nomeDoJogador = teclado.nextLine();
                             jogadorAtual = equipes.get(aux).getJogador(nomeDoJogador);
                             System.out.println("Para qual nome deseja alterar?");
-                            novoNomeDoJogador = teclado.next();
+                            novoNomeDoJogador = teclado.nextLine();
 
                             jogadorAtual.setNome(novoNomeDoJogador);
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            System.out.printf("Nome alterado para '%s' com sucesso! \n", novoNomeDoJogador);
+                            sucesso = true;
                         }
                     }
+
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
 
                 case 7:
+                    teclado.nextLine();
                     System.out.println("Qual o nome da Equipe do Jogador?");
-                    nomeDaEquipe = teclado.next();
+                    nomeDaEquipe = teclado.nextLine();
 
                     for (aux = 0; aux < equipes.size(); aux++) {
                         if (equipes.get(aux).getNomeDaEquipe().equals(nomeDaEquipe)) {
                             System.out.println("Qual o nome do Jogador?");
-                            nomeDoJogador = teclado.next();
+                            nomeDoJogador = teclado.nextLine();
                             jogadorAtual = equipes.get(aux).getJogador(nomeDoJogador);
                             System.out.println("Para qual posição deseja alterar?");
-                            posicaoDoJogador = teclado.next();
+                            posicaoDoJogador = teclado.nextLine();
 
                             jogadorAtual.setPosicao(posicaoDoJogador);
-                        } else {
-                            throw new ParametrosNulos("Equipe não encontrada");
+                            System.out.printf("Posição alterada para '%s' com sucesso \n", posicaoDoJogador);
+                            sucesso = true;
                         }
                     }
+
+                    if (!sucesso) {
+                        System.out.println("Equipe não encontrada!");
+                    }
+
+                    opcaoPessoa = 1;
                     break;
 
                 case 9:
