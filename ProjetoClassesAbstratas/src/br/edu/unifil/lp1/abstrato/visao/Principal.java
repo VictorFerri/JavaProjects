@@ -6,7 +6,7 @@ import br.edu.unifil.lp1.abstrato.modelo.Funcionario;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         Scanner teclado = new Scanner(System.in);
         Controle controleGeral = new Controle();
 
@@ -54,6 +54,7 @@ public class Principal {
 
                     if (controleGeral.getFuncionario(opcaoPessoa) == null) {
                         System.out.println("Não Encontrado");
+                        throw new ClassNotFoundException();
 
                     } else {
                         funcionarioGeral = controleGeral.getFuncionario(opcaoPessoa);
@@ -75,6 +76,7 @@ public class Principal {
                         System.out.println("Excluído com Sucesso!");
                     } else {
                         System.out.println("Não Encontrado");
+                        throw new ClassNotFoundException();
                     }
 
                     opcaoPessoa = 1;
@@ -92,6 +94,7 @@ public class Principal {
                         System.out.println("Atualizado com Sucesso!");
                     } else {
                         System.out.println("Não Encontrado");
+                        throw new ClassNotFoundException();
                     }
 
 
